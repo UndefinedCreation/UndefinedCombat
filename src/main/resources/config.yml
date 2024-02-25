@@ -1,0 +1,14 @@
+
+
+settings:
+  timer: 10
+  bypass: true
+  bossbar: true
+  actionbar: true
+  kill-on-quit: true
+
+
+blocked:
+  elytra: true
+  riptide: true
+  ender-pearls: true

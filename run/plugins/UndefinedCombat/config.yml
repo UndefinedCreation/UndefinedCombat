@@ -1,0 +1,13 @@
+
+
+settings:
+  timer: 10
+  bypass: true
+  bossbar: true
+  actionbar: true
+
+
+blocked:
+  elytra: true
+  riptide: true
+  ender-pearls: true

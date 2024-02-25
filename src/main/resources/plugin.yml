@@ -1,0 +1,4 @@
+name: UndefinedCombat
+version: '${version}'
+main: com.redmagic.undefinedcombat.UndefinedCombat
+api-version: '1.20'
