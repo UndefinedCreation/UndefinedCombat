@@ -24,6 +24,7 @@ dependencies {
     paperweight.paperDevBundle("1.20.4-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("com.redmagic:UndefinedAPI:0.4.03")
+    implementation("net.wesjd:anvilgui:1.9.2-SNAPSHOT")
 }
 
 tasks {

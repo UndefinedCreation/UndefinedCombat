@@ -30,6 +30,10 @@ fun Player.isTagged() = tagMap.containsKey(uniqueId)
 
 fun startTagCounter(player: Player, time: Int){
 
+
+    if (player.hasPermission("undefined.combat.bypass") && UndefinedCombat.plugin.configManager.settings.bypass)
+        return
+
     if (player.isTagged()){
         tagMap[player.uniqueId] = time
         return

@@ -2,10 +2,14 @@ package com.redmagic.undefinedcombat.gui
 
 import com.redmagic.undefinedapi.builders.ItemBuilder
 import com.redmagic.undefinedapi.extension.string.toComponent
+import com.redmagic.undefinedapi.menu.MenuManager.openMenu
 import com.redmagic.undefinedapi.menu.MenuSize
 import com.redmagic.undefinedapi.menu.normal.UndefinedMenu
+import com.redmagic.undefinedapi.menu.normal.button.Button
 import com.redmagic.undefinedcombat.UndefinedCombat
 import net.kyori.adventure.text.Component
+import net.wesjd.anvilgui.AnvilGUI
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.inventory.Inventory
 
@@ -16,18 +20,77 @@ class AdminGUI: UndefinedMenu("ᴀᴅᴍɪɴ ɢᴜɪ", MenuSize.MINI) {
     override fun generateInventory(): Inventory = createInventory {
 
 
+        val inv = this
+
         fillEmpty(ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName(" ").build())
 
-        setBypassItem(inventory!!)
-        setBossBar(inventory!!)
-        setActionBar(inventory!!)
-        setKillOnQuit(inventory!!)
-        setElytra(inventory!!)
-        setRiptide(inventory!!)
-        setEnderPearl(inventory!!)
-        setTimer(inventory!!)
+        setBypassItem(this)
+        setBossBar(this)
+        setActionBar(this)
+        setKillOnQuit(this)
+        setElytra(this)
+        setRiptide(this)
+        setEnderPearl(this)
+        setTimer(this)
 
 
+        addButton(Button(10){
+            plugin.configManager.settings.bypass = !plugin.configManager.settings.bypass
+            setBypassItem(inv)
+        })
+        addButton(Button(16){
+            plugin.configManager.settings.bossbar = !plugin.configManager.settings.bossbar
+            setBossBar(inv)
+        })
+        addButton(Button(15){
+            plugin.configManager.settings.actionbar = !plugin.configManager.settings.actionbar
+            setActionBar(inv)
+        })
+        addButton(Button(14){
+            plugin.configManager.settings.killOnQuit = !plugin.configManager.settings.killOnQuit
+            setKillOnQuit(inv)
+        })
+        addButton(Button(13){
+            plugin.configManager.blocked.elytra = !plugin.configManager.blocked.elytra
+            setElytra(inv)
+        })
+        addButton(Button(12){
+            plugin.configManager.blocked.riptide = !plugin.configManager.blocked.riptide
+            setRiptide(inv)
+        })
+        addButton(Button(11){
+            plugin.configManager.blocked.enderpearl = !plugin.configManager.blocked.enderpearl
+            setEnderPearl(inv)
+        })
+        addButton(Button(22){
+
+            val builder = AnvilGUI.Builder()
+                .itemLeft(ItemBuilder(Material.CLOCK).setName("<aqua>{${plugin.configManager.settings.timer}}".toComponent()).build())
+                .title("ᴄʜᴀɴɢᴇ ᴛɪᴍᴇʀ")
+                .text(plugin.configManager.settings.timer.toString())
+                .plugin(plugin)
+            builder.onClick { _, clickEvent ->
+
+                val text = clickEvent.text
+
+                try {
+
+                    val timer = text.toInt()
+
+                    plugin.configManager.settings.timer = timer
+
+                }catch (e: NumberFormatException){
+                    player.sendMessage("<red>$text ɪѕ ɴᴏᴛ ᴀ ɴᴜᴍʙᴇʀ.".toComponent())
+                }
+
+                return@onClick listOf(AnvilGUI.ResponseAction.run{
+                    player.openMenu(plugin.adminGUI)
+                })
+            }
+
+            builder.open(player)
+
+        })
 
     }
 
@@ -117,6 +180,7 @@ class AdminGUI: UndefinedMenu("ᴀᴅᴍɪɴ ɢᴜɪ", MenuSize.MINI) {
             .setName("<!i><#6aebb7>ᴛɪᴍᴇʀ".toComponent())
             .addLine(Component.text(" "))
             .addLine("<!i><aqua>ᴛɪᴍᴇʀ  <gray>${plugin.configManager.settings.timer}".toComponent())
+            .addLine(Component.text(" "))
             .addLine("<!i><gray>ᴄʟɪᴄᴋ ᴛᴏ ѕᴇᴛ ᴛʜᴇ ᴛɪᴍᴇʀ".toComponent()).build(), false)
     }
 }

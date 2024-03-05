@@ -9,14 +9,10 @@ class ConfigManager(val plugin: UndefinedCombat) {
     var settings = Settings(plugin)
     var blocked = Blocked(plugin)
 
-    init {
-        plugin.saveDefaultConfig()
-    }
-
     fun save(){
         settings.saveSettings()
         blocked.save()
-        plugin.config.save(File(plugin.dataFolder, "config.yml"))
+        plugin.saveConfigFile()
     }
 
 }

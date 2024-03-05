@@ -12,8 +12,11 @@ import com.redmagic.undefinedcombat.events.blocks.EnderPearlsListener
 import com.redmagic.undefinedcombat.events.blocks.RipTideListener
 import com.redmagic.undefinedcombat.gui.AdminGUI
 import org.bukkit.Bukkit
+import org.bukkit.configuration.file.FileConfiguration
+import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.plugin.java.JavaPlugin
+import java.io.File
 
 class UndefinedCombat : JavaPlugin() {
 
@@ -24,6 +27,9 @@ class UndefinedCombat : JavaPlugin() {
     lateinit var configManager: ConfigManager
 
     lateinit var adminGUI: AdminGUI
+    lateinit var undefinedConfig: FileConfiguration
+
+    private lateinit var configFile: File
 
     override fun onLoad() {
         Bukkit.getLogger().info("Loading UndefinedCombat")
@@ -32,6 +38,16 @@ class UndefinedCombat : JavaPlugin() {
     override fun onEnable() {
         // Plugin startup logic
         UndefinedAPI(this)
+
+
+        configFile = File(this.dataFolder, "config.yml")
+        println("a")
+        if (!configFile.exists()){
+            println("b")
+            configFile.parentFile.mkdir()
+            saveResource("config.yml", false)
+        }
+        undefinedConfig = YamlConfiguration.loadConfiguration(configFile)
 
         plugin = this
 
@@ -63,5 +79,9 @@ class UndefinedCombat : JavaPlugin() {
 
     private fun command(){
         AdminCommand()
+    }
+
+    fun saveConfigFile(){
+        undefinedConfig.save(configFile)
     }
 }
