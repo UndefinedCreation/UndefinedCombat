@@ -41,9 +41,7 @@ class UndefinedCombat : JavaPlugin() {
 
 
         configFile = File(this.dataFolder, "config.yml")
-        println("a")
         if (!configFile.exists()){
-            println("b")
             configFile.parentFile.mkdir()
             saveResource("config.yml", false)
         }
