@@ -16,6 +16,7 @@ repositories {
         name = "undefinedapiRepo"
         url = uri("https://repo.undefinedcreation.com/repo")
     }
+    maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
     maven("https://repo.codemc.io/repository/maven-snapshots/")
 }
 
@@ -23,8 +24,9 @@ repositories {
 dependencies {
     paperweight.paperDevBundle("1.20.4-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("com.redmagic:UndefinedAPI:0.4.03")
+    implementation("com.redmagic:UndefinedAPI:0.4.04")
     implementation("net.wesjd:anvilgui:1.9.2-SNAPSHOT")
+    compileOnly("me.clip:placeholderapi:2.11.5")
 }
 
 tasks {

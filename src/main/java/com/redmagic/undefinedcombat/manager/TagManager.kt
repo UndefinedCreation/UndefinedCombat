@@ -27,6 +27,8 @@ fun Player.untag(){
 
 fun Player.isTagged() = tagMap.containsKey(uniqueId)
 
+fun Player.getTaggedTime(): String = if (isTagged()) tagMap[uniqueId].toString() else "Not tagged"
+
 
 fun startTagCounter(player: Player, time: Int){
 

@@ -1,6 +1,7 @@
 package com.redmagic.undefinedcombat
 
 import com.redmagic.undefinedapi.UndefinedAPI
+import com.redmagic.undefinedapi.event.event
 import com.redmagic.undefinedcombat.command.AdminCommand
 import com.redmagic.undefinedcombat.data.ConfigManager
 import com.redmagic.undefinedcombat.events.BypassListener
@@ -11,9 +12,13 @@ import com.redmagic.undefinedcombat.events.blocks.ElytraListener
 import com.redmagic.undefinedcombat.events.blocks.EnderPearlsListener
 import com.redmagic.undefinedcombat.events.blocks.RipTideListener
 import com.redmagic.undefinedcombat.gui.AdminGUI
+import com.redmagic.undefinedcombat.placeholders.TimeLeft
+import me.clip.placeholderapi.PlaceholderAPI
+import me.clip.placeholderapi.PlaceholderAPIPlugin
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
+import org.bukkit.event.player.PlayerChatEvent
 import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
@@ -55,6 +60,12 @@ class UndefinedCombat : JavaPlugin() {
 
         events()
         command()
+
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")){
+            Bukkit.getLogger().info("PlaceHolder have been registered!")
+            TimeLeft().register()
+        }
+
     }
 
     override fun onDisable() {
