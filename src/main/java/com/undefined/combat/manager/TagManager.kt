@@ -1,11 +1,12 @@
-package com.redmagic.undefinedcombat.manager
+package com.undefined.combat.manager
 
-import com.redmagic.undefinedapi.extension.string.toComponent
-import com.redmagic.undefinedapi.scheduler.repeatingTask
-import com.redmagic.undefinedcombat.UndefinedCombat
-import com.redmagic.undefinedcombat.customEvents.PlayerTagEvent
-import com.redmagic.undefinedcombat.customEvents.PlayerUntagEvent
-import com.redmagic.undefinedcombat.extensions.sendActionbar
+import com.undefined.api.extension.string.toComponent
+import com.undefined.api.extension.string.translateColor
+import com.undefined.api.scheduler.repeatingTask
+import com.undefined.combat.UndefinedCombat
+import com.undefined.combat.customEvents.PlayerTagEvent
+import com.undefined.combat.customEvents.PlayerUntagEvent
+import com.undefined.combat.extensions.sendActionbarCombat
 import net.md_5.bungee.api.ChatColor
 import org.bukkit.Bukkit
 import org.bukkit.boss.BarColor
@@ -86,7 +87,7 @@ fun startTagCounter(player: Player, time: Int){
 
 fun updateMessages(player: Player, time: Int){
 
-    player.sendActionbar("<!i><#d92323>ʏᴏᴜ ᴀʀᴇ ɪɴ ᴄᴏᴍʙᴀᴛ ꜰᴏʀ $time ᴍᴏʀᴇ ѕᴇᴄᴏɴᴅѕ".toComponent())
+    player.sendActionbarCombat("<reset><#d92323>ʏᴏᴜ ᴀʀᴇ ɪɴ ᴄᴏᴍʙᴀᴛ ꜰᴏʀ $time ᴍᴏʀᴇ ѕᴇᴄᴏɴᴅѕ".translateColor())
 
     if (bossBarMap.containsKey(player.uniqueId)){
 

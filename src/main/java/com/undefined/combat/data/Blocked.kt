@@ -1,6 +1,6 @@
-package com.redmagic.undefinedcombat.data
+package com.undefined.combat.data
 
-import com.redmagic.undefinedcombat.UndefinedCombat
+import com.undefined.combat.UndefinedCombat
 
 class Blocked(val plugin: UndefinedCombat) {
     var elytra = plugin.undefinedConfig.getBoolean("blocked.elytra")

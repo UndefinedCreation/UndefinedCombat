@@ -1,25 +1,21 @@
-package com.redmagic.undefinedcombat
+package com.undefined.combat
 
-import com.redmagic.undefinedapi.UndefinedAPI
-import com.redmagic.undefinedapi.event.event
-import com.redmagic.undefinedcombat.command.AdminCommand
-import com.redmagic.undefinedcombat.data.ConfigManager
-import com.redmagic.undefinedcombat.events.BypassListener
-import com.redmagic.undefinedcombat.events.DeathListener
-import com.redmagic.undefinedcombat.events.HitListener
-import com.redmagic.undefinedcombat.events.PlayerQuitListener
-import com.redmagic.undefinedcombat.events.blocks.ElytraListener
-import com.redmagic.undefinedcombat.events.blocks.EnderPearlsListener
-import com.redmagic.undefinedcombat.events.blocks.RipTideListener
-import com.redmagic.undefinedcombat.gui.AdminGUI
-import com.redmagic.undefinedcombat.placeholders.TimeLeft
-import me.clip.placeholderapi.PlaceholderAPI
-import me.clip.placeholderapi.PlaceholderAPIPlugin
+import com.undefined.api.UndefinedAPI
+
+import com.undefined.combat.command.AdminCommand
+import com.undefined.combat.data.ConfigManager
+import com.undefined.combat.events.BypassListener
+import com.undefined.combat.events.DeathListener
+import com.undefined.combat.events.HitListener
+import com.undefined.combat.events.PlayerQuitListener
+import com.undefined.combat.events.blocks.ElytraListener
+import com.undefined.combat.events.blocks.EnderPearlsListener
+import com.undefined.combat.events.blocks.RipTideListener
+import com.undefined.combat.gui.AdminGUI
+import com.undefined.combat.placeholders.TimeLeft
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
-import org.bukkit.event.player.PlayerChatEvent
-import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 
@@ -42,8 +38,7 @@ class UndefinedCombat : JavaPlugin() {
 
     override fun onEnable() {
         // Plugin startup logic
-        UndefinedAPI(this)
-
+        val api = UndefinedAPI(this)
 
         configFile = File(this.dataFolder, "config.yml")
         if (!configFile.exists()){

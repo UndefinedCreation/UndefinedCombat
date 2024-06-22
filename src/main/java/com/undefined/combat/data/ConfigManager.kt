@@ -1,6 +1,6 @@
-package com.redmagic.undefinedcombat.data
+package com.undefined.combat.data
 
-import com.redmagic.undefinedcombat.UndefinedCombat
+import com.undefined.combat.UndefinedCombat
 import java.io.File
 
 class ConfigManager(val plugin: UndefinedCombat) {

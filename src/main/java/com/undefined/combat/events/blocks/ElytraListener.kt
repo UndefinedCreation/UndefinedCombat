@@ -1,10 +1,10 @@
-package com.redmagic.undefinedcombat.events.blocks
+package com.undefined.combat.events.blocks
 
-import com.redmagic.undefinedapi.event.event
-import com.redmagic.undefinedapi.scheduler.delay
-import com.redmagic.undefinedcombat.UndefinedCombat
-import com.redmagic.undefinedcombat.customEvents.PlayerTagEvent
-import com.redmagic.undefinedcombat.manager.isTagged
+import com.undefined.api.event.event
+import com.undefined.api.scheduler.delay
+import com.undefined.combat.UndefinedCombat
+import com.undefined.combat.customEvents.PlayerTagEvent
+import com.undefined.combat.manager.isTagged
 import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityToggleGlideEvent
 import org.bukkit.event.player.PlayerRiptideEvent
@@ -22,7 +22,7 @@ class ElytraListener {
         }
 
         event<PlayerTagEvent> {
-            if (UndefinedCombat.plugin.configManager.blocked.elytra)
+            if (com.undefined.combat.UndefinedCombat.plugin.configManager.blocked.elytra)
                 player.isGliding = false
         }
 

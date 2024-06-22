@@ -1,8 +1,7 @@
-package com.redmagic.undefinedcombat.placeholders
+package com.undefined.combat.placeholders
 
-import com.redmagic.undefinedcombat.manager.getTaggedTime
+import com.undefined.combat.manager.getTaggedTime
 import me.clip.placeholderapi.expansion.PlaceholderExpansion
-import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 
 class TimeLeft: PlaceholderExpansion() {

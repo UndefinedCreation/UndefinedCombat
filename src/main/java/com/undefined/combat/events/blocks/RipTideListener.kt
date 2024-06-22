@@ -1,8 +1,8 @@
-package com.redmagic.undefinedcombat.events.blocks
+package com.undefined.combat.events.blocks
 
-import com.redmagic.undefinedapi.event.event
-import com.redmagic.undefinedcombat.UndefinedCombat
-import com.redmagic.undefinedcombat.manager.isTagged
+import com.undefined.api.event.event
+import com.undefined.combat.UndefinedCombat
+import com.undefined.combat.manager.isTagged
 import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.event.block.Action
@@ -33,7 +33,7 @@ class RipTideListener {
 
     private fun block(e: PlayerInteractEvent, itemStack: ItemStack){
         if (!itemStack.hasItemMeta()) return
-        if (!itemStack.itemMeta.enchants.containsKey(Enchantment.RIPTIDE)) return
+        if (!itemStack.itemMeta!!.enchants.containsKey(Enchantment.RIPTIDE)) return
         e.isCancelled = true
     }
 
