@@ -8,12 +8,14 @@ import com.undefined.combat.events.BypassListener
 import com.undefined.combat.events.DeathListener
 import com.undefined.combat.events.HitListener
 import com.undefined.combat.events.PlayerQuitListener
+import com.undefined.combat.events.blocks.BlockedCommands
 import com.undefined.combat.events.blocks.ElytraListener
 import com.undefined.combat.events.blocks.EnderPearlsListener
 import com.undefined.combat.events.blocks.RipTideListener
 import com.undefined.combat.gui.AdminGUI
 import com.undefined.combat.placeholders.TimeLeft
 import org.bukkit.Bukkit
+import org.bukkit.NamespacedKey
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.plugin.java.JavaPlugin
@@ -23,6 +25,7 @@ class UndefinedCombat : JavaPlugin() {
 
     companion object{
         lateinit var plugin: UndefinedCombat
+        lateinit var nameSpace: NamespacedKey
     }
 
     lateinit var configManager: ConfigManager
@@ -38,7 +41,7 @@ class UndefinedCombat : JavaPlugin() {
 
     override fun onEnable() {
         // Plugin startup logic
-        val api = UndefinedAPI(this)
+        UndefinedAPI(this)
 
         configFile = File(this.dataFolder, "config.yml")
         if (!configFile.exists()){
@@ -48,6 +51,8 @@ class UndefinedCombat : JavaPlugin() {
         undefinedConfig = YamlConfiguration.loadConfiguration(configFile)
 
         plugin = this
+
+        nameSpace = NamespacedKey(this, "blocked")
 
         configManager = ConfigManager(this)
 
@@ -78,6 +83,7 @@ class UndefinedCombat : JavaPlugin() {
         RipTideListener()
         EnderPearlsListener()
         PlayerQuitListener()
+        BlockedCommands()
 
     }
 

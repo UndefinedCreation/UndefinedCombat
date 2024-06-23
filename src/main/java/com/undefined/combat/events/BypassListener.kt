@@ -7,7 +7,7 @@ import com.undefined.combat.customEvents.PlayerTagEvent
 class BypassListener {
     init {
         event<PlayerTagEvent> {
-            if (player.hasPermission("undefined.combat.bypass") && com.undefined.combat.UndefinedCombat.plugin.configManager.settings.bypass)
+            if (player.hasPermission("undefined.combat.bypass") && UndefinedCombat.plugin.configManager.settings.bypass)
                 isCancelled = true
         }
     }

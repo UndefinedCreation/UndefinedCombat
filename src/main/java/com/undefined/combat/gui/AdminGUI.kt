@@ -61,6 +61,16 @@ class AdminGUI: UndefinedMenu("ᴀᴅᴍɪɴ ɢᴜɪ", MenuSize.MINI) {
             plugin.configManager.blocked.enderpearl = !plugin.configManager.blocked.enderpearl
             setEnderPearl(inv)
         })
+
+        setItem(4, ItemBuilder(Material.ANVIL)
+            .setName("<reset><#9534eb>ʙʟᴏᴄᴋᴇᴅ ᴄᴏᴍᴍᴀɴᴅѕ".translateColor())
+            .addLine(" ")
+            .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴠɪᴇᴡ / ᴇᴅɪᴛ ᴄᴏᴍᴍᴀɴᴅѕ".translateColor()).build())
+
+        addButton(Button(4) {
+            player.openMenu(BlockCommandPage(plugin.configManager.blocked.createItemStackList()))
+        })
+
         addButton(Button(22){
 
             val builder = AnvilGUI.Builder()

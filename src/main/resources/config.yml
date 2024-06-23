@@ -33,3 +33,8 @@ blocked:
 
   # If ender pearls are allowed to be used in combat
   ender-pearls: true
+
+  commands:
+    - "msg"
+
+

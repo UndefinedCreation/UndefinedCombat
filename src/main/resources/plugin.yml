@@ -1,5 +1,5 @@
 name: UndefinedCombat
 version: '${version}'
-main: com.redmagic.undefinedcombat.UndefinedCombat
+main: com.undefined.combat.UndefinedCombat
 api-version: '1.20'
 softdepend: [PlaceholderAPI]

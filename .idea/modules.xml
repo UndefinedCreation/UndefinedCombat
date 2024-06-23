@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/UndefinedCombat.main.iml" filepath="$PROJECT_DIR$/.idea/modules/UndefinedCombat.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/UndefinedCombat.test.iml" filepath="$PROJECT_DIR$/.idea/modules/UndefinedCombat.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.undefined.UndefinedCombat.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.undefined.UndefinedCombat.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.undefined.UndefinedCombat.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.undefined.UndefinedCombat.test.iml" />
     </modules>
   </component>
 </project>
