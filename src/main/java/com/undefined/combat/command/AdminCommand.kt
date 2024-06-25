@@ -9,7 +9,7 @@ class AdminCommand {
 
     init {
 
-        UndefinedCommand("admincombat", "undefined.combat.admin.command")
+        UndefinedCommand("admincombat", "undefined.combat.admincommand")
             .addExecutePlayer {
                 openMenu(UndefinedCombat.plugin.adminGUI)
                 return@addExecutePlayer false

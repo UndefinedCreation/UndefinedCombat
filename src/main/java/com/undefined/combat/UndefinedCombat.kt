@@ -62,7 +62,7 @@ class UndefinedCombat : JavaPlugin() {
         command()
 
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")){
-            Bukkit.getLogger().info("PlaceHolder have been registered!")
+            Bukkit.getLogger().info("Placeholder has been registered!")
             TimeLeft().register()
         }
 
