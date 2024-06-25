@@ -7,7 +7,7 @@ import org.bukkit.entity.Player
 class TimeLeft: PlaceholderExpansion() {
 
     override fun onPlaceholderRequest(player: Player?, params: String): String =
-        if (params == "timer")
+        if (params.equals("timer", true))
             player?.getTaggedTime() ?: "Player is not online"
         else ""
 
