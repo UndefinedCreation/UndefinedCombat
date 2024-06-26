@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.undefined"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -27,7 +27,7 @@ dependencies {
     compileOnly("org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("com.undefined:api:0.5.39:mapped")
-    implementation("net.wesjd:anvilgui:1.9.2-SNAPSHOT")
+    implementation("net.wesjd:anvilgui:1.9.6-SNAPSHOT")
     compileOnly("me.clip:placeholderapi:2.11.5")
 }
 
@@ -40,7 +40,7 @@ tasks {
         kotlinOptions.jvmTarget = "21"
     }
     runServer {
-        minecraftVersion("1.20.4")
+        minecraftVersion("1.21")
     }
 }
 
