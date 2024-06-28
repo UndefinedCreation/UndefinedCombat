@@ -2,14 +2,16 @@ package com.undefined.combat.gui
 
 import com.undefined.api.builders.ItemBuilder
 import com.undefined.api.extension.string.translateColor
-import com.undefined.api.extension.string.translateColor
+import com.undefined.api.menu.MenuManager.closeMenu
 import com.undefined.api.menu.MenuManager.openMenu
 import com.undefined.api.menu.MenuSize
 import com.undefined.api.menu.normal.UndefinedMenu
 import com.undefined.api.menu.normal.button.Button
 import com.undefined.combat.UndefinedCombat
 import net.wesjd.anvilgui.AnvilGUI
+import org.bukkit.Bukkit.setWhitelist
 import org.bukkit.Material
+import org.bukkit.event.inventory.ClickType
 import org.bukkit.inventory.Inventory
 
 class AdminGUI: UndefinedMenu("ᴀᴅᴍɪɴ ɢᴜɪ", MenuSize.MINI) {
@@ -31,6 +33,7 @@ class AdminGUI: UndefinedMenu("ᴀᴅᴍɪɴ ɢᴜɪ", MenuSize.MINI) {
         setRiptide(this)
         setEnderPearl(this)
         setTimer(this)
+        setCommandsItem(this)
 
 
         addButton(Button(10){
@@ -62,13 +65,15 @@ class AdminGUI: UndefinedMenu("ᴀᴅᴍɪɴ ɢᴜɪ", MenuSize.MINI) {
             setEnderPearl(inv)
         })
 
-        setItem(4, ItemBuilder(Material.ANVIL)
-            .setName("<reset><#9534eb>ʙʟᴏᴄᴋᴇᴅ ᴄᴏᴍᴍᴀɴᴅѕ".translateColor())
-            .addLine(" ")
-            .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴠɪᴇᴡ / ᴇᴅɪᴛ ᴄᴏᴍᴍᴀɴᴅѕ".translateColor()).build())
-
         addButton(Button(4) {
-            player.openMenu(BlockCommandPage(plugin.configManager.blocked.createItemStackList()))
+            when(click) {
+                ClickType.RIGHT -> player.openMenu(BlockCommandPage(plugin.configManager.blocked.createItemStackList()))
+                ClickType.LEFT -> {
+                    plugin.configManager.blocked.whitelist = !plugin.configManager.blocked.whitelist
+                    setCommandsItem(this@createInventory)
+                }
+                else -> {}
+            }
         })
 
         addButton(Button(22){
@@ -112,6 +117,16 @@ class AdminGUI: UndefinedMenu("ᴀᴅᴍɪɴ ɢᴜɪ", MenuSize.MINI) {
     private fun getMaterial(boolean: Boolean): Material = when(boolean){
         true -> Material.LIME_CONCRETE
         false -> Material.RED_CONCRETE
+    }
+
+    private fun setCommandsItem(inventory: Inventory) {
+        inventory.setItem(4, ItemBuilder(Material.ANVIL)
+            .setName("<reset><#9534eb>ʙʟᴏᴄᴋᴇᴅ ᴄᴏᴍᴍᴀɴᴅѕ".translateColor())
+            .addLine(" ")
+            .addLine("<reset><gray>ʙʟᴏᴄᴋɪɴɢ ѕᴛᴀᴛᴇ : <aqua>${if (!plugin.configManager.blocked.whitelist) "<#d92323>ʙʟᴏᴄᴋɪɴɢ" else "<#32e67d>ᴡʜɪᴛᴇʟɪѕᴛ"}".translateColor())
+            .addLine(" ")
+            .addLine("<reset><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ʙʟᴏᴄᴋɪɴɢ ѕᴛᴀᴛᴇ".translateColor())
+            .addLine("<reset><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴠɪᴇᴡ / ᴇᴅɪᴛ ᴄᴏᴍᴍᴀɴᴅѕ".translateColor()).build())
     }
 
     private fun setBypassItem(inventory: Inventory){

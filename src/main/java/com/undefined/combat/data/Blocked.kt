@@ -12,6 +12,7 @@ class Blocked(val plugin: UndefinedCombat) {
     var riptide = plugin.undefinedConfig.getBoolean("blocked.riptide")
     var enderpearl = plugin.undefinedConfig.getBoolean("blocked.ender-pearls")
 
+    var whitelist = plugin.undefinedConfig.getBoolean("blocked.whitelist-commands").or(false)
     val blockedCommands: MutableList<String> = plugin.undefinedConfig.getStringList("blocked.commands")
 
     fun save(){
@@ -19,6 +20,7 @@ class Blocked(val plugin: UndefinedCombat) {
         plugin.undefinedConfig.set("blocked.riptide", riptide)
         plugin.undefinedConfig.set("blocked.enderpearl", enderpearl)
         plugin.undefinedConfig.set("blocked.commands", blockedCommands)
+        plugin.undefinedConfig.set("blocked.whitelist-commands", whitelist)
     }
 
 

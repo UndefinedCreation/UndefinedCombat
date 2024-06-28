@@ -15,7 +15,12 @@ class BlockedCommands {
             if (!player.isTagged()) return@event
             val command = message.replace("/", "").split(" ")[0]
 
-            if (UndefinedCombat.plugin.configManager.blocked.blockedCommands.contains(command)) {
+            val list = UndefinedCombat.plugin.configManager.blocked.blockedCommands
+
+            val check = if (UndefinedCombat.plugin.configManager.blocked.whitelist)
+                !list.contains(command) else list.contains(command)
+
+            if (check) {
 
                 isCancelled = true
 

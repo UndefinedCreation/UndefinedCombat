@@ -34,6 +34,9 @@ blocked:
   # If ender pearls are allowed to be used in combat
   ender-pearls: true
 
+  # If this enabled it will make the commands in the commands option act like a whitelist instead of blocking them.
+  whitelist-commands: false
+
   commands:
     - "msg"
 
