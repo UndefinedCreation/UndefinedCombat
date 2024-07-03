@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.undefined"
-version = "1.0.2"
+version = "1.0.3"
 
 repositories {
     mavenCentral()
@@ -26,7 +26,7 @@ repositories {
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("com.undefined:api:0.5.39:mapped")
+    implementation("com.undefined:api:0.5.49:mapped")
     implementation("net.wesjd:anvilgui:1.9.6-SNAPSHOT")
     compileOnly("me.clip:placeholderapi:2.11.5")
 }
