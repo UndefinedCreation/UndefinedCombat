@@ -48,7 +48,7 @@ fun startTagCounter(player: Player, time: Int){
 
     if (UndefinedCombat.plugin.configManager.settings.bossbar){
         if (!bossBarMap.containsKey(player.uniqueId)){
-            val bossBar = Bukkit.createBossBar("${ChatColor.of("#d92323")}ʏᴏᴜ ᴀʀᴇ ɪɴ ᴄᴏᴍʙᴀᴛ ꜰᴏʀ $time ᴍᴏʀᴇ ѕᴇᴄᴏɴᴅѕ", BarColor.RED, BarStyle.SOLID)
+            val bossBar = Bukkit.createBossBar(UndefinedCombat.plugin.configManager.bossBar.replace("%time%", time.toString()).translateColor(), BarColor.RED, BarStyle.SOLID)
             bossBarMap[player.uniqueId] = bossBar
             bossBar.addPlayer(player)
         }
@@ -87,14 +87,14 @@ fun startTagCounter(player: Player, time: Int){
 
 fun updateMessages(player: Player, time: Int){
 
-    player.sendActionbarCombat("<reset><#d92323>ʏᴏᴜ ᴀʀᴇ ɪɴ ᴄᴏᴍʙᴀᴛ ꜰᴏʀ $time ᴍᴏʀᴇ ѕᴇᴄᴏɴᴅѕ".translateColor())
+    player.sendActionbarCombat(UndefinedCombat.plugin.configManager.actionBar.replace("%time%", time.toString()).translateColor())
 
     if (bossBarMap.containsKey(player.uniqueId)){
 
         val bossBar = bossBarMap[player.uniqueId]!!
 
         if (time > 0) {
-            bossBar.setTitle("${ChatColor.of("#d92323")}ʏᴏᴜ ᴀʀᴇ ɪɴ ᴄᴏᴍʙᴀᴛ ꜰᴏʀ $time ᴍᴏʀᴇ ѕᴇᴄᴏɴᴅѕ")
+            bossBar.setTitle(UndefinedCombat.plugin.configManager.bossBar.replace("%time%", time.toString()).translateColor())
             bossBar.progress = time.toDouble() / UndefinedCombat.plugin.configManager.settings.timer.toDouble()
 
             bossBar.addPlayer(player)

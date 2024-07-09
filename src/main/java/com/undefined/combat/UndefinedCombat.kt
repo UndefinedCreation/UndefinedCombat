@@ -4,10 +4,7 @@ import com.undefined.api.UndefinedAPI
 
 import com.undefined.combat.command.AdminCommand
 import com.undefined.combat.data.ConfigManager
-import com.undefined.combat.events.BypassListener
-import com.undefined.combat.events.DeathListener
-import com.undefined.combat.events.HitListener
-import com.undefined.combat.events.PlayerQuitListener
+import com.undefined.combat.events.*
 import com.undefined.combat.events.blocks.BlockedCommands
 import com.undefined.combat.events.blocks.ElytraListener
 import com.undefined.combat.events.blocks.EnderPearlsListener
@@ -35,6 +32,8 @@ class UndefinedCombat : JavaPlugin() {
 
     private lateinit var configFile: File
 
+    lateinit var chatListener: ChatListener
+
     override fun onLoad() {
         Bukkit.getLogger().info("Loading UndefinedCombat")
     }
@@ -42,6 +41,8 @@ class UndefinedCombat : JavaPlugin() {
     override fun onEnable() {
         // Plugin startup logic
         UndefinedAPI(this)
+
+        chatListener = ChatListener()
 
         configFile = File(this.dataFolder, "config.yml")
         if (!configFile.exists()){

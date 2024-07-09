@@ -37,7 +37,12 @@ blocked:
   # If this enabled it will make the commands in the commands option act like a whitelist instead of blocking them.
   whitelist-commands: false
 
+  # All the command that are blocked in combat
   commands:
     - "msg"
+
+messages:
+  action-bar: "<reset><#d92323>ʏᴏᴜ ᴀʀᴇ ɪɴ ᴄᴏᴍʙᴀᴛ ꜰᴏʀ %time% ᴍᴏʀᴇ ѕᴇᴄᴏɴᴅѕ"
+  boss-bar: "<reset><#d92323>ʏᴏᴜ ᴀʀᴇ ɪɴ ᴄᴏᴍʙᴀᴛ ꜰᴏʀ %time% ᴍᴏʀᴇ ѕᴇᴄᴏɴᴅѕ"
 
 

@@ -41,12 +41,34 @@ class AdminGUI: UndefinedMenu("ᴀᴅᴍɪɴ ɢᴜɪ", MenuSize.MINI) {
             setBypassItem(inv)
         })
         addButton(Button(16){
-            plugin.configManager.settings.bossbar = !plugin.configManager.settings.bossbar
-            setBossBar(inv)
+            if (click == ClickType.LEFT) {
+                plugin.configManager.settings.bossbar = !plugin.configManager.settings.bossbar
+                setBossBar(inv)
+            } else {
+                player.closeMenu()
+
+                player.sendMessage("<#32e67d>ᴘʟᴇᴀѕᴇ ɪɴᴘᴜᴛ ᴛʜᴇ ɴᴇᴡ ᴍᴇѕѕᴀɢᴇ ɪɴᴛᴏ ᴄʜᴀᴛ. ᴜѕᴇ %ᴛɪᴍᴇ% ᴛᴏ ᴅɪѕᴘʟᴀʏ ᴛʜᴇ ᴛɪᴍᴇ ʟᴇꜰᴛ.".translateColor())
+
+                UndefinedCombat.plugin.chatListener.chatInput(player) {
+                    plugin.configManager.bossBar = this
+                    player.sendMessage("<green>ʙᴏѕѕʙᴀʀ ᴍᴇѕѕᴀɢᴇ ʜᴀѕ ʙᴇᴇɴ ᴜᴘᴅᴀᴛᴇᴅ ᴛᴏ <reset>$this".translateColor())
+                }
+            }
         })
         addButton(Button(15){
-            plugin.configManager.settings.actionbar = !plugin.configManager.settings.actionbar
-            setActionBar(inv)
+            if (click == ClickType.LEFT) {
+                plugin.configManager.settings.actionbar = !plugin.configManager.settings.actionbar
+                setActionBar(inv)
+            } else {
+                player.closeMenu()
+
+                player.sendMessage("<#32e67d>ᴘʟᴇᴀѕᴇ ɪɴᴘᴜᴛ ᴛʜᴇ ɴᴇᴡ ᴍᴇѕѕᴀɢᴇ ɪɴᴛᴏ ᴄʜᴀᴛ. ᴜѕᴇ %ᴛɪᴍᴇ% ᴛᴏ ᴅɪѕᴘʟᴀʏ ᴛʜᴇ ᴛɪᴍᴇ ʟᴇꜰᴛ.".translateColor())
+
+                UndefinedCombat.plugin.chatListener.chatInput(player) {
+                    plugin.configManager.actionBar = this
+                    player.sendMessage("<green>ᴀᴄᴛɪᴏɴʙᴀʀ ᴍᴇѕѕᴀɢᴇ ʜᴀѕ ʙᴇᴇɴ ᴜᴘᴅᴀᴛᴇᴅ ᴛᴏ <reset>$this".translateColor())
+                }
+            }
         })
         addButton(Button(14){
             plugin.configManager.settings.killOnQuit = !plugin.configManager.settings.killOnQuit
@@ -146,7 +168,8 @@ class AdminGUI: UndefinedMenu("ᴀᴅᴍɪɴ ɢᴜɪ", MenuSize.MINI) {
             .addLine(" ")
             .addLine(getEnabledText(plugin.configManager.settings.bossbar).translateColor())
             .addLine(" ")
-            .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴛʜᴇ ʙᴏѕѕʙᴀʀ".translateColor()).build(), false)
+            .addLine("<reset><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴛʜᴇ ʙᴏѕѕʙᴀʀ".translateColor())
+            .addLine("<reset><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴛʜᴇ ʙᴏѕѕ ʙᴀʀ ᴍᴇѕѕᴀɢᴇ".translateColor()).build(), false)
     }
 
     private fun setActionBar(inventory: Inventory){
@@ -156,7 +179,8 @@ class AdminGUI: UndefinedMenu("ᴀᴅᴍɪɴ ɢᴜɪ", MenuSize.MINI) {
             .addLine(" ")
             .addLine(getEnabledText(plugin.configManager.settings.actionbar).translateColor())
             .addLine(" ")
-            .addLine("<reset><gray>ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴛʜᴇ ᴀᴄᴛɪᴏɴʙᴀʀ".translateColor()).build(), false)
+            .addLine("<reset><gray>ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴛᴏɢɢʟᴇ ᴛʜᴇ ᴀᴄᴛɪᴏɴʙᴀʀ".translateColor())
+            .addLine("<reset><gray>ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ᴄʜᴀɴɢᴇ ᴛʜᴇ ᴀᴄᴛɪᴏɴ ʙᴀʀ ᴍᴇѕѕᴀɢᴇ".translateColor()).build(), false)
     }
 
     private fun setKillOnQuit(inventory: Inventory){
