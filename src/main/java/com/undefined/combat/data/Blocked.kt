@@ -1,6 +1,5 @@
 package com.undefined.combat.data
 
-import com.undefined.api.builders.ItemBuilder
 import com.undefined.api.extension.string.translateColor
 import com.undefined.combat.UndefinedCombat
 import org.bukkit.Material
@@ -18,7 +17,7 @@ class Blocked(val plugin: UndefinedCombat) {
     fun save(){
         plugin.undefinedConfig.set("blocked.elytra", elytra)
         plugin.undefinedConfig.set("blocked.riptide", riptide)
-        plugin.undefinedConfig.set("blocked.enderpearl", enderpearl)
+        plugin.undefinedConfig.set("blocked.ender-pearls", enderpearl)
         plugin.undefinedConfig.set("blocked.commands", blockedCommands)
         plugin.undefinedConfig.set("blocked.whitelist-commands", whitelist)
     }

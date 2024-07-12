@@ -5,7 +5,6 @@ import java.io.File
 
 class ConfigManager(val plugin: UndefinedCombat) {
 
-
     var settings = Settings(plugin)
     var blocked = Blocked(plugin)
 
